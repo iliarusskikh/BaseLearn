@@ -2,6 +2,8 @@
 pragma solidity ^0.8.26;
 
 contract ArraysExercise {
+
+    uint256[3] public FixedArr = [5,3,4];
     // Declare state variables to store arrays of numbers, timestamps, and senders
     uint[] numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // Array of numbers initialized with values
     uint[] timestamps; // Dynamic array to store timestamps
@@ -32,6 +34,10 @@ contract ArraysExercise {
     function removeNumbers() public {
         numbers.pop();
     }
+
+    bytes32 public slot0 = keccak256(abi.encode(0)); //allows getting hash for storage element number for dynamic arrays
+    //use web3.eth.getStorageAt("address",elementnumberORhash)
+    
 
     // Function to append new numbers to the numbers array
     function appendToNumbers(uint[] calldata _toAppend) public {
